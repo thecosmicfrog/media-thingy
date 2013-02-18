@@ -8,7 +8,7 @@
 <table>
 	{% for artist in artists %}
 		<tr>
-		<td>{{ artist.name }}</td>
+		<td><a href="{{ artist.name }}">{{ artist.name }}</a></td>
 		</tr>
 	{% endfor %}
 </table>
