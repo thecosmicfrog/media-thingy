@@ -24,6 +24,6 @@ def artist_name(request, artist_name):
     tracks = Track.objects.filter(artist__name=artist_name).order_by('title')
     return render_to_response('artist_name.html', locals(), context_instance=RequestContext(request))
 
-def artist_album_title(request, album_title):
+def artist_album_title(request, artist_name, album_title):
     album_tracks = Track.objects.filter(album__title=album_title)
     return render_to_response('artist_album_title.html', locals(), context_instance=RequestContext(request))

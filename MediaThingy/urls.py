@@ -1,5 +1,4 @@
 from django.conf.urls import patterns, include
-from music.models import Artist
 from music.views import home, music, test_weezer, artists, artist_name, artist_album_title
 from picture.views import pictures
 
@@ -21,8 +20,8 @@ urlpatterns = patterns('',
     (r'^pictures/$', pictures),
     (r'^test_weezer/$', test_weezer),
     (r'^music/artists/$', artists),
-    (r'^music/artists/([\w\W]+)/([\w\W]+)/$', artist_album_title),
-    (r'^music/artists/([\w\W]+)/$', artist_name),
+    (r'^music/artists/(?P<artist_name>[\w\W]+)/(?P<album_title>[\w\W]+)/$', artist_album_title),
+    (r'^music/artists/(?P<artist_name>[\w\W]+)/$', artist_name),
 )
 
 #if DEBUG:
