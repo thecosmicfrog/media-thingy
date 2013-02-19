@@ -1,15 +1,13 @@
 from django.conf.urls import patterns, include
-from music.views import home, music, test_weezer, artists, artist_name, artist_album_title
+from music.views import home, music
+from music.views import artists, artist_name, artist_album_title
+from music.views import albums, album_title
+from music.views import songs
 from picture.views import pictures
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
-
-#artist_detail_info = {
-#    "queryset" : Artist.objects.all(),
-#    "template_object_name" : "author",
-#}
 
 urlpatterns = patterns('',
     # Examples:
@@ -18,10 +16,12 @@ urlpatterns = patterns('',
     (r'^$', home),
     (r'^music/$', music),
     (r'^pictures/$', pictures),
-    (r'^test_weezer/$', test_weezer),
     (r'^music/artists/$', artists),
     (r'^music/artists/(?P<artist_name>[\w\W]+)/(?P<album_title>[\w\W]+)/$', artist_album_title),
     (r'^music/artists/(?P<artist_name>[\w\W]+)/$', artist_name),
+    (r'^music/albums/(?P<album_title>[\w\W]+)/$', album_title),
+    (r'^music/albums/$', albums),
+    (r'^music/songs/$', songs),
 )
 
 #if DEBUG:

@@ -27,3 +27,18 @@ def artist_name(request, artist_name):
 def artist_album_title(request, artist_name, album_title):
     album_tracks = Track.objects.filter(album__title=album_title)
     return render_to_response('artist_album_title.html', locals(), context_instance=RequestContext(request))
+
+def albums(request):
+    albums = Album.objects.all()
+    return render_to_response('albums.html', locals(), context_instance=RequestContext(request))
+
+def album_title(request, album_title):
+    album_tracks = Track.objects.filter(album__title=album_title).order_by('title')
+    artist_set = Artist.objects.filter(album__title=album_title)
+    for a in artist_set:
+        artist_name = a
+    return render_to_response('album_title.html', locals(), context_instance=RequestContext(request))
+
+def songs(request):
+    songs = Track.objects.all()
+    return render_to_response('songs.html', locals(), context_instance=RequestContext(request))    

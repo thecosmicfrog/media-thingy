@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Songs{% endblock %}
+
+{% block header1 %}Songs{% endblock %}
+
+{% block content %}
+<table>
+	{% for song in songs %}
+		<tr>
+		<td><a href="{{ song.title }}">{{ song.title }}</a></td>
+		</tr>
+	{% endfor %}
+</table>
+{% endblock %}
