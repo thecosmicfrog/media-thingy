@@ -1,0 +1,8 @@
+/.settings
+.pydevproject
+.project
+settings.py
+*.pyc
+test_*
+*~
+admin.py
