@@ -3,6 +3,11 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css">
 	<title>MediaThingy – {% block title %}{% endblock %}</title>
+	{% block breadcrumb %}
+		{% for crumb in crumbs %}
+			<a href="{{ crumb }}">{{ crumb|capfirst }}</a> >
+		{% endfor %}
+	{% endblock %}
 </head>
 <body>
 	<h1>{% block header1 %}{% endblock %}</h1>
