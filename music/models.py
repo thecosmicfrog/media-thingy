@@ -22,6 +22,7 @@ class Track(models.Model):
     artist = models.ForeignKey(Artist)
     album = models.ForeignKey(Album)
     length = models.CharField(max_length=8)
+    url = models.URLField(max_length=200)
     
     def __unicode__(self):
         return self.title

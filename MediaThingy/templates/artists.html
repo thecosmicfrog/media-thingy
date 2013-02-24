@@ -5,6 +5,10 @@
 {% block header1 %}Artists{% endblock %}
 
 {% block content %}
+{% for crumb_url in crumb_urls %}
+	{{ crumb_url }}
+{% endfor %}
+
 <table>
 	{% for artist in artists %}
 		<tr>

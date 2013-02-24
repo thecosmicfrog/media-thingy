@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{ track_title }}{% endblock %}
+
+{% block header1 %}{{ track_title }}{% endblock %}
+
+{% block content %}
+<div id="track_list">
+	<table>
+			<audio src="{{ STATIC_URL }}music/{{ track_url }}" controls="controls"></audio>
+	</table>
+</div>
+{% endblock %}

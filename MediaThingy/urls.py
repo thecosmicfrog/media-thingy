@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include
 from music.views import home, music
 from music.views import artists, artist_name, artist_album_title
 from music.views import albums, album_title
-from music.views import songs
+from music.views import songs, track
 from picture.views import pictures
 
 # Uncomment the next two lines to enable the admin:
@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     (r'^music/albums/(?P<album_title>[\w\W]+)/$', album_title),
     (r'^music/albums/$', albums),
     (r'^music/songs/$', songs),
+    (r'^music/songs/(?P<track_title>[\w\W]+)/$', track),
 )
 
 #if DEBUG:
