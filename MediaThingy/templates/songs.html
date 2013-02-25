@@ -6,9 +6,9 @@
 
 {% block content %}
 <table>
-	{% for song in songs %}
+	{% for track in tracks %}
 		<tr>
-		<td><a href="{{ song.title }}">{{ song.title }}</a></td>
+		<td><a href="{{ track.title }}">{{ track.title }}</a></td>
 		</tr>
 	{% endfor %}
 </table>

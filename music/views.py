@@ -56,7 +56,7 @@ def album_title(request, album_title):
 
 def songs(request):
     crumbs = make_crumbs(request)
-    songs = Track.objects.all()
+    tracks = Track.objects.all()
     return render_to_response('songs.html', locals(), context_instance=RequestContext(request))
 
 def track(request, track_title):
