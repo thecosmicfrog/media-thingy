@@ -22,7 +22,6 @@ def add_to_db(audio_files):
             t1.save()
             print 'Added to DB: ' + audio_file_id3.tag.title
 
-    
 def process_file(curr_dir):
     curr_dir = os.path.abspath(curr_dir)
  
