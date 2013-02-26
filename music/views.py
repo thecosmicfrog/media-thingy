@@ -2,6 +2,7 @@ from __future__ import print_function
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from music.models import Artist, Album, Track
+from MediaThingy.settings import STATIC_ROOT
 
 def base(request):
     crumbs = make_crumbs(request)
@@ -62,8 +63,9 @@ def songs(request):
 def track(request, track_title):
     crumbs = make_crumbs(request)
     url_set = Track.objects.filter(title=track_title)
-    track_url = [u.url for u in url_set][0] # Assign the first element in the list to track_url
-    print(track_url)
+    track_url_full = [u.url for u in url_set][0]        # Assign the first element in the list to track_url
+    track_media_url = track_url_full.split(STATIC_ROOT)[1]    # 
+    print(track_media_url)
     return render_to_response('track.html', locals(), context_instance=RequestContext(request))
 
 def make_crumbs(request):
