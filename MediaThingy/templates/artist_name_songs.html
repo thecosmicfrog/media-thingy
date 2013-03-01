@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Songs – {{ artist_name }}{% endblock %}
+
+{% block header1 %}Songs – {{ artist_name }}{% endblock %}
+
+{% block content %}
+<table>
+	{% for track in tracks %}
+		<tr>
+			<td><a href="{{ track.title }}">{{ track.title }}</a></td>
+		</tr>
+	{% endfor %}
+</table>
+{% endblock %}
