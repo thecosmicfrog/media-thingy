@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Albums – {{ artist_name }}{% endblock %}
+
+{% block header1 %}Albums – {{ artist_name }}{% endblock %}
+
+{% block content %}
+<table>
+	{% for album in albums %}
+		<tr>
+			<td><a href="{{ album.title }}">{{ album.title }}</a></td>
+		</tr>
+	{% endfor %}
+</table>
+{% endblock %}

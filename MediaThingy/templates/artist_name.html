@@ -5,19 +5,20 @@
 {% block header1 %}{{ artist_name }}{% endblock %}
 
 {% block content %}
-<h2>Albums</h2>
+<h2><a href="albums">Albums</a></h2>
 <table>
 	{% for album in albums %}
 		<tr>
-			<td><a href="{{ album.title }}">{{ album.title }}</a></td>
+			<td><a href="albums/{{ album.title }}">{{ album.title }}</a></td>
 		</tr>
 	{% endfor %}
 </table>
-<h2>Songs</h2>
+
+<h2><a href="songs">Songs</a></h2>
 <table>
 	{% for track in tracks %}
 		<tr>
-			<td><a href="{{ track.title }}">{{ track.title }}</a></td>
+			<td><a href="songs/{{ track.title }}">{{ track.title }}</a></td>
 		</tr>
 	{% endfor %}
 </table>

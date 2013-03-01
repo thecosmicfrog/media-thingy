@@ -1,7 +1,9 @@
 from django.conf.urls import patterns, include
 from music.views import home, music
-from music.views import artists, artist_name, artist_album_title
-from music.views import albums, album_title
+from music.views import artists, artist_name, artist_album_title, artist_name_albums, \
+                        artist_name_songs, artist_name_songs_track_title, \
+                        artist_name_albums_album_title_track_title
+from music.views import albums, album_title, album_title_track_title
 from music.views import songs, track
 from picture.views import pictures
 
@@ -17,8 +19,14 @@ urlpatterns = patterns('',
     (r'^music/$', music),
     (r'^pictures/$', pictures),
     (r'^music/artists/$', artists),
+    (r'^music/artists/(?P<artist_name>[\w\W]+)/albums/(?P<album_title>[\w\W]+)/(?P<track_title>[\w\W]+)/$', \
+                artist_name_albums_album_title_track_title),
+    (r'^music/artists/(?P<artist_name>[\w\W]+)/songs/(?P<track_title>[\w\W]+)/$', artist_name_songs_track_title),
+    (r'^music/artists/(?P<artist_name>[\w\W]+)/albums/$', artist_name_albums),
+    (r'^music/artists/(?P<artist_name>[\w\W]+)/songs/$', artist_name_songs),
     (r'^music/artists/(?P<artist_name>[\w\W]+)/(?P<album_title>[\w\W]+)/$', artist_album_title),
     (r'^music/artists/(?P<artist_name>[\w\W]+)/$', artist_name),
+    (r'^music/albums/(?P<album_title>[\w\W]+)/(?P<track_title>[\w\W]+)/$', album_title_track_title),
     (r'^music/albums/(?P<album_title>[\w\W]+)/$', album_title),
     (r'^music/albums/$', albums),
     (r'^music/songs/$', songs),
