@@ -1,7 +1,7 @@
 import eyed3
 import os
 from models import Album, Artist, Track
-from MediaThingy.settings import STATIC_ROOT
+from MediaThingy.settings import MEDIA_ROOT
 
 audio_list = []
 
@@ -46,4 +46,4 @@ def process_file(curr_dir):
     
     return audio_list
 
-add_to_db(process_file(STATIC_ROOT + 'music/'))
+add_to_db(process_file(MEDIA_ROOT + 'music/'))

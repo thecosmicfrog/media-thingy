@@ -1,22 +1,13 @@
-from __future__ import print_function
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from music.models import Artist, Album, Track
-from MediaThingy.settings import STATIC_ROOT
+from MediaThingy.settings import MEDIA_ROOT
 
 def base(request):
     crumbs = make_crumbs(request)
-    
-    print('crumbs:', end='')
-    print(crumbs)
     crumb_urls = []
-    
     crumb_urls.append(crumbs[0])
     crumb_urls.append(crumbs[0] + '/' + crumbs[1])
-        
-    print('crumb_urls:', end='')
-    print(crumb_urls)
-    
     return render_to_response('base.html', locals(), context_instance=RequestContext(request))
 
 def home(request):
@@ -47,7 +38,7 @@ def artist_name_albums_album_title_track_title(request, artist_name, album_title
     crumbs = make_crumbs(request)
     url_set = Track.objects.filter(title=track_title)
     track_url_full = [u.url for u in url_set][0]              # Assign the first element in the list to track_url
-    track_media_url = track_url_full.split(STATIC_ROOT)[1]    # Split on STATIC_ROOT to find the relative URL
+    track_media_url = track_url_full.split(MEDIA_ROOT)[1]    # Split on STATIC_ROOT to find the relative URL
     return render_to_response('artist_name_songs_track_title.html', locals(), context_instance=RequestContext(request))
 
 def artist_name_songs(request, artist_name):
@@ -59,7 +50,7 @@ def artist_name_songs_track_title(request, artist_name, track_title):
     crumbs = make_crumbs(request)
     url_set = Track.objects.filter(title=track_title)
     track_url_full = [u.url for u in url_set][0]              # Assign the first element in the list to track_url
-    track_media_url = track_url_full.split(STATIC_ROOT)[1]    # Split on STATIC_ROOT to find the relative URL
+    track_media_url = track_url_full.split(MEDIA_ROOT)[1]    # Split on STATIC_ROOT to find the relative URL
     return render_to_response('artist_name_songs_track_title.html', locals(), context_instance=RequestContext(request))
 
 def artist_album_title(request, artist_name, album_title):
@@ -69,7 +60,7 @@ def artist_album_title(request, artist_name, album_title):
 
 def albums(request):
     crumbs = make_crumbs(request)
-    albums = Album.objects.all()
+    albums = Album.objects.all().order_by('title')
     return render_to_response('albums.html', locals(), context_instance=RequestContext(request))
 
 def album_title(request, album_title):
@@ -83,7 +74,7 @@ def album_title_track_title(request, album_title, track_title):
     crumbs = make_crumbs(request)
     url_set = Track.objects.filter(title=track_title)
     track_url_full = [u.url for u in url_set][0]            # Assign the first element in the list to track_url
-    track_media_url = track_url_full.split(STATIC_ROOT)[1]  # Split on STATIC_ROOT to find the relative URL
+    track_media_url = track_url_full.split(MEDIA_ROOT)[1]  # Split on STATIC_ROOT to find the relative URL
     return render_to_response('album_title_track_title.html', locals(), context_instance=RequestContext(request))
 
 def songs(request):
@@ -95,8 +86,7 @@ def track(request, track_title):
     crumbs = make_crumbs(request)
     url_set = Track.objects.filter(title=track_title)
     track_url_full = [u.url for u in url_set][0]            # Assign the first element in the list to track_url
-    track_media_url = track_url_full.split(STATIC_ROOT)[1]  # Split on STATIC_ROOT to find the relative URL 
-    print(track_media_url)
+    track_media_url = track_url_full.split(MEDIA_ROOT)[1]  # Split on STATIC_ROOT to find the relative URL 
     return render_to_response('track.html', locals(), context_instance=RequestContext(request))
 
 def make_crumbs(request):
