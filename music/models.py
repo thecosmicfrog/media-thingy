@@ -18,11 +18,11 @@ class Album(models.Model):
         return self.title
     
 class Track(models.Model):
-    title = models.CharField(max_length=300)
+    title = models.CharField(max_length=400)
     artist = models.ForeignKey(Artist)
     album = models.ForeignKey(Album)
     length = models.CharField(max_length=8)
-    url = models.URLField(max_length=200)
+    url = models.URLField(max_length=600)
     
     def __unicode__(self):
         return self.title

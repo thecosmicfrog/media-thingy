@@ -6,6 +6,7 @@ from music.views import artists, artist_name, artist_album_title, artist_name_al
 from music.views import albums, album_title, album_title_track_title
 from music.views import songs, track
 from picture.views import pictures
+from video.views import videos
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -17,7 +18,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^$', home),
     (r'^music/$', music),
-    (r'^pictures/$', pictures),
     (r'^music/artists/$', artists),
     (r'^music/artists/(?P<artist_name>[\w\W]+)/albums/(?P<album_title>[\w\W]+)/(?P<track_title>[\w\W]+)/$', \
                 artist_name_albums_album_title_track_title),
@@ -31,6 +31,10 @@ urlpatterns = patterns('',
     (r'^music/albums/$', albums),
     (r'^music/songs/$', songs),
     (r'^music/songs/(?P<track_title>[\w\W]+)/$', track),
+    
+    (r'^pictures/$', pictures),
+    
+    (r'^videos/$', videos),
 )
 
 #if DEBUG:
