@@ -10,7 +10,7 @@ def add_to_db(video_files):
         video_title = video_file.rsplit('/', 1)[1] # Get filename
         
         if not Video.objects.filter(title=video_title).exists():
-            vid1 = Video(title=video_title)
+            vid1 = Video(title=video_title, url=video_file)
             vid1.save()
     
             print 'Added to DB: ' + video_title
