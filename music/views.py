@@ -27,36 +27,36 @@ def artist_name(request, artist_name):
     crumbs = make_crumbs(request)
     albums = Album.objects.filter(artist__name=artist_name).order_by('title')
     tracks = Track.objects.filter(artist__name=artist_name).order_by('title')
-    return render_to_response('music/artist_name.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('music/artist/name.html', locals(), context_instance=RequestContext(request))
 
 def artist_name_albums(request, artist_name):
     crumbs = make_crumbs(request)
     albums = Album.objects.filter(artist__name=artist_name).order_by('title')
-    return render_to_response('music/artist_name_albums.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('music/artist/name/albums.html', locals(), context_instance=RequestContext(request))
 
 def artist_name_albums_album_title_track_title(request, artist_name, album_title, track_title):
     crumbs = make_crumbs(request)
     url_set = Track.objects.filter(title=track_title)
     track_url_full = [u.url for u in url_set][0]              # Assign the first element in the list to track_url
     track_media_url = track_url_full.split(MEDIA_ROOT)[1]    # Split on STATIC_ROOT to find the relative URL
-    return render_to_response('music/artist_name_songs_track_title.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('music/artist/name/songs_track_title.html', locals(), context_instance=RequestContext(request))
 
 def artist_name_songs(request, artist_name):
     crumbs = make_crumbs(request)
     tracks = Track.objects.filter(artist__name=artist_name).order_by('title')
-    return render_to_response('music/artist_name_albums_album_title_track_title.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('music/artist/name/albums_album_title_track_title.html', locals(), context_instance=RequestContext(request))
 
 def artist_name_songs_track_title(request, artist_name, track_title):
     crumbs = make_crumbs(request)
     url_set = Track.objects.filter(title=track_title)
     track_url_full = [u.url for u in url_set][0]              # Assign the first element in the list to track_url
     track_media_url = track_url_full.split(MEDIA_ROOT)[1]    # Split on STATIC_ROOT to find the relative URL
-    return render_to_response('music/artist_name_songs_track_title.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('music/artist/name/songs_track_title.html', locals(), context_instance=RequestContext(request))
 
 def artist_album_title(request, artist_name, album_title):
     crumbs = make_crumbs(request)
     album_tracks = Track.objects.filter(album__title=album_title)
-    return render_to_response('music/artist_album_title.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('music/artist/album_title.html', locals(), context_instance=RequestContext(request))
 
 def albums(request):
     crumbs = make_crumbs(request)
@@ -68,14 +68,14 @@ def album_title(request, album_title):
     album_tracks = Track.objects.filter(album__title=album_title).order_by('title')
     artist_set = Artist.objects.filter(album__title=album_title)
     artist_name = [a.name for a in artist_set][0]
-    return render_to_response('music/album_title.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('music/album/title.html', locals(), context_instance=RequestContext(request))
 
 def album_title_track_title(request, album_title, track_title):
     crumbs = make_crumbs(request)
     url_set = Track.objects.filter(title=track_title)
     track_url_full = [u.url for u in url_set][0]            # Assign the first element in the list to track_url
     track_media_url = track_url_full.split(MEDIA_ROOT)[1]  # Split on STATIC_ROOT to find the relative URL
-    return render_to_response('music/album_title_track_title.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('music/album/track_title.html', locals(), context_instance=RequestContext(request))
 
 def songs(request):
     crumbs = make_crumbs(request)

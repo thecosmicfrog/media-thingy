@@ -6,6 +6,12 @@
 
 {% block content %}
 
-<video src="{{ MEDIA_URL }}{{ video_media_url }}" controls="controls" width="640" height="480"></video>
+<table>
+	{% for video in videos %}
+		<tr>
+			<td><a href="{{ video.title }}">{{ video.title }}</a></td>
+		</tr>
+	{% endfor %}
+</table>
 		
 {% endblock %}

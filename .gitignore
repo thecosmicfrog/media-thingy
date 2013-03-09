@@ -8,3 +8,4 @@ test_*
 admin.py
 *.mp3
 *.jpg
+/MediaThingy/media/*

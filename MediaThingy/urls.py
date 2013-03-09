@@ -6,7 +6,7 @@ from music.views import artists, artist_name, artist_album_title, artist_name_al
 from music.views import albums, album_title, album_title_track_title
 from music.views import songs, track
 from picture.views import pictures
-from video.views import videos
+from video.views import videos, video_title
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -34,6 +34,7 @@ urlpatterns = patterns('',
     
     (r'^pictures/$', pictures),
     
+    (r'^videos/(?P<video_title>[\w\W]+)/$', video_title),
     (r'^videos/$', videos),
 )
 
