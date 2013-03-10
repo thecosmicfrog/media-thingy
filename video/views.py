@@ -5,7 +5,7 @@ from video.models import Video
 from MediaThingy.settings import MEDIA_ROOT
 
 def videos(request):
-    videos = Video.objects.all()
+    videos = Video.objects.order_by('title')
     return render_to_response('videos/videos.html', locals(), context_instance=RequestContext(request))
 
 def video_title(request, video_title):

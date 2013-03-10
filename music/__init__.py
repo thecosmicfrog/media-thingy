@@ -42,8 +42,7 @@ def process_file(curr_dir):
             # If file is a compatible audio file, print its name.
             if file_ext in ['.mp3']:
                 audio_list.append(curr_file)
-        # File is directory. Recursively run function.
-        else:
+        else: # File is directory. Recursively run function.
             process_file(curr_file)
     
     return audio_list
