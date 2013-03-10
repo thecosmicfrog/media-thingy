@@ -5,7 +5,7 @@ from music.views import artists, artist_name, artist_album_title, artist_name_al
                         artist_name_albums_album_title_track_title
 from music.views import albums, album_title, album_title_track_title
 from music.views import songs, track
-from picture.views import pictures
+from picture.views import pictures, picture_name
 from video.views import videos, video_title
 
 # Uncomment the next two lines to enable the admin:
@@ -32,6 +32,7 @@ urlpatterns = patterns('',
     (r'^music/songs/$', songs),
     (r'^music/songs/(?P<track_title>[\w\W]+)/$', track),
     
+    (r'^pictures/(?P<picture_name>[\w\W]+)/$', picture_name),
     (r'^pictures/$', pictures),
     
     (r'^videos/(?P<video_title>[\w\W]+)/$', video_title),

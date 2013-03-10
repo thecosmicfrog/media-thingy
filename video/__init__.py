@@ -6,7 +6,6 @@ video_list = []
 
 def add_to_db(video_files):
     for video_file in video_files:
-        
         video_title = video_file.rsplit('/', 1)[1] # Get filename
         
         if not Video.objects.filter(title=video_title).exists():
