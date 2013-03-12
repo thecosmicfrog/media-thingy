@@ -4,10 +4,26 @@
 
 {% block header1 %}{{ picture_title }}{% endblock %}
 
+{% block head %}
+<script>
+	$(document).ready(function() {
+		$("#rotateButton").click(function() {
+			$("img").css({
+				"-webkit-transform-origin": "50% 50%",
+				"-webkit-transform": "rotate(90deg)",
+				"-moz-transform": "rotate(90deg)"
+			});
+		});
+	});
+</script>
+{% endblock %}
+
 {% block content %}
 <div id="picture_list">
 	<table>
-			<img src="{{ MEDIA_URL }}{{ picture_media_url }}" width="640" height="480"></img>
+			<div id="picture"><img src="{{ MEDIA_URL }}{{ picture_media_url }}"></img></div>
 	</table>
 </div>
+
+<div id="rotateButton">Rotate right</div>
 {% endblock %}

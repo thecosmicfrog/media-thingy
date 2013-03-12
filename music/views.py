@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from music.models import Artist, Album, Track
-from MediaThingy.settings import MEDIA_ROOT
+from MediaThingy.settings import MEDIA_ROOT, SITE_URL
 
 def base(request):
     crumbs = make_crumbs(request)
@@ -83,6 +83,7 @@ def songs(request):
     return render_to_response('music/songs.html', locals(), context_instance=RequestContext(request))
 
 def track(request, track_title):
+    site_url = SITE_URL
     crumbs = make_crumbs(request)
     url_set = Track.objects.filter(title=track_title)
     track_url_full = [u.url for u in url_set][0]            # Assign the first element in the list to track_url

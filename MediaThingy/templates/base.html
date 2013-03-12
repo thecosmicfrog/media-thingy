@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css">
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jplayer.blue.monday.css" />
 		<title>MediaThingy – {% block title %}{% endblock %}</title>
+		<script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jplayer.min.js"></script>
+		{% block head %}{% endblock %}
 	</head>
 	<body>
 		{% block breadcrumb %}
