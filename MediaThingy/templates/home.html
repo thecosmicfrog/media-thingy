@@ -4,13 +4,12 @@
 
 {% block header1 %}Home{% endblock %}
 
-{% block content %}
-<h3>Welcome to MediaThingy</h3>
+{% block col1 %}
 
 <div id="media_list">
 	<table>
 		<tr>
-			<td><a href="music">Music</a></td>
+			<td><a href="music" class="btn">Music</a></td>
 		</tr>
 		<tr>
 			<td><a href="pictures">Pictures</a></td>
@@ -20,4 +19,11 @@
 		</tr>
 	</table>
 </div>
+
+{% endblock %}
+
+{% block col2 %}
+
+Hello, from col2
+
 {% endblock %}

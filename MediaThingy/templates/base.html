@@ -3,9 +3,20 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" />
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jplayer.blue.monday.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css" />
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css" />
+		<!-- [if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="shortcut icon" href="../assets/ico/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+		
 		<title>MediaThingy – {% block title %}{% endblock %}</title>
 		<script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jplayer.min.js"></script>
+<!-- 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jplayer.min.js"></script> -->
 		{% block head %}{% endblock %}
 	</head>
 	<body>
@@ -18,6 +29,73 @@
 		{% endfor %}
 		{% endblock %}
 		<h1>{% block header1 %}{% endblock %}</h1>
-		{% block content %}{% endblock %}
+		
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand" href="/">MediaThingy</a>
+					<div class="nav-collapse collapse"">
+						<p class="navbar-text pull-right">
+							<a href="" class="btn btn-small btn-primary">Sign In</a>
+						</p>
+						<ul class="nav">
+							<li><a href="/">Home</a></li>
+							<li><a href="/music">Music</a></li>
+							<li><a href="/pictures">Pictures</a></li>
+							<li><a href="/videos">Videos</a></li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span9">
+					{% block col1 %}{% endblock %}
+				</div><!-- /span -->
+				<div class="span3">
+					{% block col2 %}{% endblock %}
+				</div><!-- /span -->
+			</div><!-- /row -->
+			
+			{% block content %}{% endblock %}
+			
+			<hr>
+			<footer>
+				<p>&copy; Aaron Hastings, 2013</p>
+			</footer>
+		</div><!-- /fluid-container -->
+		
+		<script src="../assets/js/jquery.js"></script>
+		<script src="../assets/js/bootstrap-transition.js"></script>
+		<script src="../assets/js/bootstrap-alert.js"></script>
+		<script src="../assets/js/bootstrap-modal.js"></script>
+		<script src="../assets/js/bootstrap-dropdown.js"></script>
+		<script src="../assets/js/bootstrap-scrollspy.js"></script>
+		<script src="../assets/js/bootstrap-tab.js"></script>
+		<script src="../assets/js/bootstrap-tooltip.js"></script>
+		<script src="../assets/js/bootstrap-popover.js"></script>
+		<script src="../assets/js/bootstrap-button.js"></script>
+		<script src="../assets/js/bootstrap-collapse.js"></script>
+		<script src="../assets/js/bootstrap-carousel.js"></script>
+		<script src="../assets/js/bootstrap-typeahead.js"></script>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
