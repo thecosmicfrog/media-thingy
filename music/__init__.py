@@ -5,11 +5,11 @@ from MediaThingy.settings import MEDIA_ROOT
 
 audio_list = []
 
-def add_to_db(audio_files):
+def add_to_db(audio_files):    
     for audio_file in audio_files:
-        audio_file_id3 = eyed3.load(audio_file)
-
         try:
+            audio_file_id3 = eyed3.load(audio_file)
+            
             if not Artist.objects.filter(name=audio_file_id3.tag.artist).exists():
                 ar1 = Artist(name=audio_file_id3.tag.artist)
                 ar1.save()

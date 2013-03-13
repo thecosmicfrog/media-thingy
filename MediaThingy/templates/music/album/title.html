@@ -2,6 +2,24 @@
 
 {% block title %}{{ album_title }} – {{ artist_name }}{% endblock %}
 
+{% block head %}
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#jquery_jplayer_1").jPlayer({
+			ready: function() {
+				$(this).jPlayer("setMedia", {
+					mp3: "{{ site_url }}{{ MEDIA_URL }}{{ track_media_url }}"
+				});
+			},
+			swfPath: "/js",
+			supplied: "mp3"
+		});
+	});
+</script>
+
+{% endblock %}
+
 {% block header1 %}{{ album_title }} – {{ artist_name }}{% endblock %}
 
 {% block content %}

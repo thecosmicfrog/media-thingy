@@ -2,8 +2,6 @@
 
 {% block title %}{{ track_title }}{% endblock %}
 
-{% block header1 %}{{ track_title }}{% endblock %}
-
 {% block head %}
 
 <script type="text/javascript">
@@ -22,8 +20,10 @@
 
 {% endblock %}
 
+{% block header1 %}{{ track_title }}{% endblock %}
+
 {% block content %}
 
-{% include "player.html" %}
+{% include "music_player.html" %}
 
 {% endblock %}
