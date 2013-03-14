@@ -1,29 +1,39 @@
 h1 {
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 42px;
+	padding-left: 15px;
 }
 
-h2 {
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 26px;
-	color: #000000;
-}
+/* h2 { */
+/* 	font-family: Tahoma, Geneva, sans-serif; */
+/* 	font-size: 26px; */
+/* 	color: #000000; */
+/* } */
 
-body {
-	font-family: Tahoma, Geneva, sans-serif;
+/* body { */
+/* 	font-family: Tahoma, Geneva, sans-serif; */
+/* } */
+
+#crumbs {
+	padding-left: 15px;
 }
 
 #media_list {
 	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 26px;
+	font-size: 18px;
+	padding-top: 15px;
 }
 
-img {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 640px;
-	height: 480px;
-	margin-top: -240px;
-	margin-left: -320px;
+td {
+	padding: 5px;
 }
+
+/* img { */
+/* 	position: absolute; */
+/* 	top: 50%; */
+/* 	left: 50%; */
+/* 	width: 640px; */
+/* 	height: 480px; */
+/* 	margin-top: -240px; */
+/* 	margin-left: -320px; */
+/* } */

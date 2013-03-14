@@ -5,11 +5,16 @@
 {% block header1 %}Songs – {{ artist_name }}{% endblock %}
 
 {% block content %}
-<table>
-	{% for track in tracks %}
-		<tr>
-			<td><a href="{{ track.title }}">{{ track.title }}</a></td>
-		</tr>
-	{% endfor %}
-</table>
+
+<div id="media_list">
+	<table class="table bordered-table">
+		{% for track in tracks %}
+			<tr>
+				<td><a href="{{ track.title }}">{{ track.title }}</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+
+
 {% endblock %}

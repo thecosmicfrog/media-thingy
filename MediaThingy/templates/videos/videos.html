@@ -6,12 +6,14 @@
 
 {% block content %}
 
-<table>
-	{% for video in videos %}
-		<tr>
-			<td><a href="{{ video.title }}">{{ video.title }}</a></td>
-		</tr>
-	{% endfor %}
-</table>
+<div id="media_list">
+	<table>
+		{% for video in videos %}
+			<tr>
+				<td><a href="{{ video.title }}" class="btn">{{ video.title }}</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
 		
 {% endblock %}

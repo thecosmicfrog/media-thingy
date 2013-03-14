@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" />
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jplayer.blue.monday.css" />
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css" />
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jplayer.blue.monday.css" />
 		<!-- [if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link rel="shortcut icon" href="../assets/ico/favicon.ico">
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+		<link rel="shortcut icon" href="{{ STATIC_URL }}assets/ico/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}assets/ico/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}assets/ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}assets/ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ STATIC_URL }}assets/ico/apple-touch-icon-57-precomposed.png">
 		
 		<title>MediaThingy – {% block title %}{% endblock %}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		
+		<style type="text/css">
+			body {
+				padding-top: 60px;
+				padding-bottom: 60px;
+			}
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+		</style>
+		
 		<script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
-<!-- 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jplayer.min.js"></script> -->
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jplayer.min.js"></script>
 		{% block head %}{% endblock %}
 	</head>
 	<body>
 		{% block breadcrumb %}
-		{% for crumb in crumbs %}
-			<a href="{{ crumb }}">{{ crumb|capfirst }}</a>
-			{% if not forloop.last %}
-				>
-			{% endif %}
-		{% endfor %}
+		<div id="crumbs">
+			{% for crumb in crumbs %}
+				<a href="{{ crumb }}">{{ crumb|capfirst }}</a>
+				{% if not forloop.last %}
+					>
+				{% endif %}
+			{% endfor %}
+		</div>
 		{% endblock %}
 		<h1>{% block header1 %}{% endblock %}</h1>
 		
@@ -39,7 +56,6 @@
 							<a href="" class="btn btn-small btn-primary">Sign In</a>
 						</p>
 						<ul class="nav">
-							<li><a href="/">Home</a></li>
 							<li><a href="/music">Music</a></li>
 							<li><a href="/pictures">Pictures</a></li>
 							<li><a href="/videos">Videos</a></li>
@@ -51,7 +67,7 @@
 		
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div class="span9">
+				<div class="span5">
 					{% block col1 %}{% endblock %}
 				</div><!-- /span -->
 				<div class="span3">
@@ -67,19 +83,19 @@
 			</footer>
 		</div><!-- /fluid-container -->
 		
-		<script src="../assets/js/jquery.js"></script>
-		<script src="../assets/js/bootstrap-transition.js"></script>
-		<script src="../assets/js/bootstrap-alert.js"></script>
-		<script src="../assets/js/bootstrap-modal.js"></script>
-		<script src="../assets/js/bootstrap-dropdown.js"></script>
-		<script src="../assets/js/bootstrap-scrollspy.js"></script>
-		<script src="../assets/js/bootstrap-tab.js"></script>
-		<script src="../assets/js/bootstrap-tooltip.js"></script>
-		<script src="../assets/js/bootstrap-popover.js"></script>
-		<script src="../assets/js/bootstrap-button.js"></script>
-		<script src="../assets/js/bootstrap-collapse.js"></script>
-		<script src="../assets/js/bootstrap-carousel.js"></script>
-		<script src="../assets/js/bootstrap-typeahead.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/jquery.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-transition.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-alert.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-modal.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-dropdown.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-scrollspy.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-tab.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-tooltip.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-popover.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-button.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-collapse.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-carousel.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/bootstrap-typeahead.js"></script>
 	</body>
 </html>
 

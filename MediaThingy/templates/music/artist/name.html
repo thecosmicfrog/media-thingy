@@ -6,20 +6,29 @@
 
 {% block content %}
 <h2><a href="albums">Albums</a></h2>
-<table>
-	{% for album in albums %}
-		<tr>
-			<td><a href="albums/{{ album.title }}">{{ album.title }}</a></td>
-		</tr>
-	{% endfor %}
-</table>
+
+<div id="media_list">
+	<table class="table table-bordered">
+		{% for album in albums %}
+			<tr>
+				<td><a href="albums/{{ album.title }}">{{ album.title }}</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+
+<br />
 
 <h2><a href="songs">Songs</a></h2>
-<table>
-	{% for track in tracks %}
-		<tr>
-			<td><a href="songs/{{ track.title }}">{{ track.title }}</a></td>
-		</tr>
-	{% endfor %}
-</table>
+
+<div id="media_list">
+	<table class="table table-bordered">
+		{% for track in tracks %}
+			<tr>
+				<td><a href="songs/{{ track.title }}">{{ track.title }}</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+
 {% endblock %}

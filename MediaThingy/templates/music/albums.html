@@ -5,11 +5,15 @@
 {% block header1 %}Albums{% endblock %}
 
 {% block content %}
-<table>
-	{% for album in albums %}
-		<tr>
-		<td><a href="{{ album.title }}">{{ album.title }}</a></td>
-		</tr>
-	{% endfor %}
-</table>
+
+<div id="media_list">
+	<table>
+		{% for album in albums %}
+			<tr>
+				<td><a href="{{ album.title }}" class="btn">{{ album.title }}</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+
 {% endblock %}

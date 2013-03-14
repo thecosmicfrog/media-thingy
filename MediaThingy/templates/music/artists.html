@@ -4,16 +4,15 @@
 
 {% block header1 %}Artists{% endblock %}
 
-{% block content %}
-{% for crumb_url in crumb_urls %}
-	{{ crumb_url }}
-{% endfor %}
+{% block col1 %}
 
-<table>
-	{% for artist in artists %}
-		<tr>
-		<td><a href="{{ artist.name }}">{{ artist.name }}</a></td>
-		</tr>
-	{% endfor %}
-</table>
+<div id="media_list">
+	<table class="table table-bordered">
+		{% for artist in artists %}
+			<tr>
+				<td><a href="{{ artist.name }}">{{ artist.name }}</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
 {% endblock %}
