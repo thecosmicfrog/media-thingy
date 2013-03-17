@@ -5,8 +5,6 @@
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" />
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.css" />
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jplayer.blue.monday.css" />
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery.nailthumb.1.1.css" />
 		<!-- [if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -32,23 +30,10 @@
 		</style>
 		
 		<script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jplayer.min.js"></script>
 		{% block head %}{% endblock %}
 	</head>
 	<body>
-		{% block breadcrumb %}
-		<div id="crumbs">
-			{% for crumb in crumbs %}
-				<a href="{{ crumb }}">{{ crumb|capfirst }}</a>
-				{% if not forloop.last %}
-					>
-				{% endif %}
-			{% endfor %}
-		</div>
-		{% endblock %}
-<!-- 		<div class="hero-unit"> -->
-			<h2>{% block header1 %}{% endblock %}</h2>
-<!-- 		</div> -->
+		<h2>{% block header1 %}{% endblock %}</h2>
 		
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
@@ -87,7 +72,6 @@
 		</div><!-- /fluid-container -->
 		
 		<script src="{{ STATIC_URL }}assets/js/jquery.js"></script>
-		<script src="{{ STATIC_URL }}assets/js/jquery.nailthumb.1.1.js"></script>
 		<script src="{{ STATIC_URL }}assets/js/bootstrap-transition.js"></script>
 		<script src="{{ STATIC_URL }}assets/js/bootstrap-alert.js"></script>
 		<script src="{{ STATIC_URL }}assets/js/bootstrap-modal.js"></script>

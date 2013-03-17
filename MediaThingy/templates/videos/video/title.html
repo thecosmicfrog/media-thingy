@@ -4,28 +4,14 @@
 
 {% block header1 %}{{ video_title }}{% endblock %}
 
-{% block head %}
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#jquery_jplayer_1").jPlayer({
-			ready: function() {
-				$(this).jPlayer("setMedia", {
-					m4v: "{{ site_url }}{{ MEDIA_URL }}{{ video_media_url }}"
-				});
-			},
-			swfPath: "/js",
-			supplied: "m4v"
-		});
-	});
-</script>
-
-{% endblock %}
+{% block head %}{% endblock %}
 
 {% block content %}
 
-{% include "video_player.html" %}
-
-<p>URL: {{ site_url }}{{ MEDIA_URL }}{{ video_media_url }}</p>
+<div id="video_list">
+	<video width="384" height="216" controls>
+		<source src="{{ MEDIA_URL }}{{ video_media_url }}" type="video/mp4">
+	</video>
+</div>
 
 {% endblock %}

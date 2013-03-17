@@ -2,28 +2,16 @@
 
 {% block title %}{{ track_title }}{% endblock %}
 
-{% block head %}
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#jquery_jplayer_1").jPlayer({
-			ready: function() {
-				$(this).jPlayer("setMedia", {
-					mp3: "{{ site_url }}{{ MEDIA_URL }}{{ track_media_url }}"
-				});
-			},
-			swfPath: "/js",
-			supplied: "mp3"
-		});
-	});
-</script>
-
-{% endblock %}
+{% block head %}{% endblock %}
 
 {% block header1 %}{{ track_title }}{% endblock %}
 
 {% block content %}
 
-{% include "music_player.html" %}
+<div id="media_list">
+	<table>
+			<audio src="{{ MEDIA_URL }}{{ track_media_url }}" controls="controls"></audio>
+	</table>
+</div>
 
 {% endblock %}
