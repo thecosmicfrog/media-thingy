@@ -4,12 +4,27 @@
 
 {% block header1 %}Pictures{% endblock %}
 
+{% block head %}
+
+{% endblock %}
+
 {% block content %}
 <table>
-	{% for picture in pictures %}
+	{% for picture in picture_media_urls %}
 		<tr>
-			<td><a href="{{ picture.name }}">{{ picture.name }}</a></td>
+			<td>
+				<a href="{{ picture.name }}">{{ picture.name }}</a>
+<!-- 				<a href="{{ picture.name }}"><img src="{{ MEDIA_URL }}{{ picture }}" /></a> -->
+			</td>
 		</tr>
 	{% endfor %}
+
+<!-- 	{% for folder in folder_struct %} -->
+<!-- 		{% for f in folder %} -->
+<!-- 			{{ f }} -> -->
+<!-- 		{% endfor %} -->
+<!-- 		<br> -->
+<!-- 	{% endfor %} -->
 </table>
+
 {% endblock %}

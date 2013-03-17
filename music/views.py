@@ -44,7 +44,7 @@ def artist_name_albums_album_title_track_title(request, artist_name, album_title
 def artist_name_songs(request, artist_name):
     crumbs = make_crumbs(request)
     tracks = Track.objects.filter(artist__name=artist_name).order_by('title')
-    return render_to_response('music/artist/name/albums_album_title_track_title.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('music/artist/name/songs.html', locals(), context_instance=RequestContext(request))
 
 def artist_name_songs_track_title(request, artist_name, track_title):
     crumbs = make_crumbs(request)
