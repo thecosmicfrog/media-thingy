@@ -4,13 +4,12 @@
 
 {% block header1 %}Pictures{% endblock %}
 
-{% block head %}
-
-{% endblock %}
+{% block head %}{% endblock %}
 
 {% block content %}
+
 <table>
-	{% for picture in picture_media_urls %}
+	{% for picture in pictures %}
 		<tr>
 			<td>
 				<a href="{{ picture.name }}">{{ picture.name }}</a>

@@ -4,26 +4,50 @@
 
 {% block header1 %}{{ picture_title }}{% endblock %}
 
-{% block head %}
+{% block head %}{% endblock %}
+
+{% block content %}
+
+<div id="media_list">
+	<table>
+			<div id="picture"><img src="{{ MEDIA_URL }}{{ picture_media_url }}"></img></div>
+	</table>
+</div>
+
+<div class="btn-group">
+	<a id="rotateAnticlockwiseButton" class="btn btn-primary">
+		<img src="{{ STATIC_URL}}img/rotate_anticlockwise.png" />
+	</a>
+	<a id="rotateClockwiseButton" class="btn btn-primary">
+		<img src="{{ STATIC_URL}}img/rotate_clockwise.png" />
+	</a>
+</div>
+
+{% block scripts %}
+
 <script>
 	$(document).ready(function() {
-		$("#rotateButton").click(function() {
-			$("img").css({
+		$("#rotateClockwiseButton").click(function() {
+			$("#media_list").css({
 				"-webkit-transform-origin": "50% 50%",
 				"-webkit-transform": "rotate(90deg)",
 				"-moz-transform": "rotate(90deg)"
 			});
 		});
 	});
+	
+	$(document).ready(function() {
+		$("#rotateAnticlockwiseButton").click(function() {
+			$("#media_list").css({
+				"-webkit-transform-origin": "50% 50%",
+				"-webkit-transform": "rotate(-90deg)",
+				"-moz-transform": "rotate(-90deg)"
+			});
+		});
+	});
 </script>
+
 {% endblock %}
 
-{% block content %}
-<div id="picture_list">
-	<table>
-			<div id="picture"><img src="{{ MEDIA_URL }}{{ picture_media_url }}"></img></div>
-	</table>
-</div>
-
-<div id="rotateButton">Rotate right</div>
 {% endblock %}
+

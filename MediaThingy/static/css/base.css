@@ -21,7 +21,8 @@ h1 {
 #media_list {
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 18px;
-	padding-top: 15px;
+	padding-top: 60px;
+	padding-bottom: 20px;
 }
 
 td {
