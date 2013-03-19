@@ -4,11 +4,13 @@ h1 {
 	padding-left: 15px;
 }
 
-/* h2 { */
-/* 	font-family: Tahoma, Geneva, sans-serif; */
-/* 	font-size: 26px; */
-/* 	color: #000000; */
-/* } */
+h2 {
+	padding-top: 30px;
+	padding-left: 20px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 26px;
+	color: #000000;
+}
 
 /* body { */
 /* 	font-family: Tahoma, Geneva, sans-serif; */
@@ -21,7 +23,7 @@ h1 {
 #media_list {
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 18px;
-	padding-top: 60px;
+	padding-top: 30px;
 	padding-bottom: 20px;
 }
 

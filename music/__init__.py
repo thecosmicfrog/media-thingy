@@ -1,7 +1,7 @@
 import eyed3
 import os
 from models import Album, Artist, Track
-from MediaThingy.settings import MEDIA_ROOT, MEDIA_URL
+from MediaThingy.settings import MEDIA_ROOT, MEDIA_URL, SITE_ROOT
 
 audio_list = []
 
@@ -51,4 +51,5 @@ def process_file(curr_dir):
     
     return audio_list
 
+os.system('bash ' + SITE_ROOT + '/../setup_media.sh') # Clear down and sync DB
 add_to_db(process_file(MEDIA_ROOT + 'music/'))

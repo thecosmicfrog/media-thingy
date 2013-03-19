@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "DROP TABLE music_track, music_album, music_artist, picture_picture, video_video;" | psql mediathingy
+
 rm music/__init__.pyc
 mv music/__init__.py music/__init_temp__.py
 touch music/__init__.py
