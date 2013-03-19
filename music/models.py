@@ -17,7 +17,8 @@ class Track(models.Model):
     title = models.CharField(max_length=400)
     artist = models.ForeignKey(Artist)
     album = models.ForeignKey(Album)
-    url = models.URLField(max_length=600)
+    fspath = models.URLField(max_length=600)
+    media_url = models.URLField(max_length=500)
     
     def __unicode__(self):
         return self.title

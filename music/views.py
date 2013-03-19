@@ -26,9 +26,8 @@ def artist_name_albums(request, artist_name):
     return render_to_response('music/artist/name/albums.html', locals(), context_instance=RequestContext(request))
 
 def artist_name_albums_album_title_track_title(request, artist_name, album_title, track_title):
-    url_set = Track.objects.filter(title=track_title)
-    track_url_full = [u.url for u in url_set][0]              # Assign the first element in the list to track_url
-    track_media_url = track_url_full.split(MEDIA_ROOT)[1]    # Split on STATIC_ROOT to find the relative URL
+    track_set = Track.objects.filter(title=track_title)
+    track = [t for t in track_set][0] # Assign the first element in the list to track_url
     return render_to_response('music/artist/name/albums/album_title_track_title.html', locals(), context_instance=RequestContext(request))
 
 def artist_name_songs(request, artist_name):
@@ -36,9 +35,8 @@ def artist_name_songs(request, artist_name):
     return render_to_response('music/artist/name/songs.html', locals(), context_instance=RequestContext(request))
 
 def artist_name_songs_track_title(request, artist_name, track_title):
-    url_set = Track.objects.filter(title=track_title)
-    track_url_full = [u.url for u in url_set][0]              # Assign the first element in the list to track_url
-    track_media_url = track_url_full.split(MEDIA_ROOT)[1]    # Split on STATIC_ROOT to find the relative URL
+    track_set = Track.objects.filter(title=track_title)
+    track = [t for t in track_set][0] # Assign the first element in the list to track_url
     return render_to_response('music/artist/name/songs/track_title.html', locals(), context_instance=RequestContext(request))
 
 def artist_album_title(request, artist_name, album_title):
@@ -56,9 +54,8 @@ def album_title(request, album_title):
     return render_to_response('music/album/title.html', locals(), context_instance=RequestContext(request))
 
 def album_title_track_title(request, album_title, track_title):
-    url_set = Track.objects.filter(title=track_title)
-    track_url_full = [u.url for u in url_set][0]            # Assign the first element in the list to track_url
-    track_media_url = track_url_full.split(MEDIA_ROOT)[1]  # Split on STATIC_ROOT to find the relative URL
+    track_set = Track.objects.filter(title=track_title)
+    track = [t for t in track_set][0] # Assign the first element in the list to track_url
     return render_to_response('music/album/track_title.html', locals(), context_instance=RequestContext(request))
 
 def songs(request):
@@ -67,8 +64,8 @@ def songs(request):
 
 def track(request, track_title):
     site_url = SITE_URL
-    url_set = Track.objects.filter(title=track_title)
-    track_url_full = [u.url for u in url_set][0]            # Assign the first element in the list to track_url
-    track_media_url = track_url_full.split(MEDIA_ROOT)[1]  # Split on STATIC_ROOT to find the relative URL 
+    track_set = Track.objects.filter(title=track_title)
+    track = [t for t in track_set][0] # Assign the first element in the list to track_url
+    
     return render_to_response('music/track.html', locals(), context_instance=RequestContext(request))
 

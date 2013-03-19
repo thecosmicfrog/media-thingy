@@ -9,7 +9,7 @@
 		$("#jquery_jplayer_1").jPlayer({
 			ready: function() {
 				$(this).jPlayer("setMedia", {
-					mp3: "{{ site_url }}{{ MEDIA_URL }}{{ track_media_url }}"
+					mp3: "{{ site_url }}{{ track.media_url }}"
 				});
 			},
 			swfPath: "/js",

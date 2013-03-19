@@ -1,7 +1,7 @@
 import eyed3
 import os
 from models import Album, Artist, Track
-from MediaThingy.settings import MEDIA_ROOT
+from MediaThingy.settings import MEDIA_ROOT, MEDIA_URL
 
 audio_list = []
 
@@ -19,7 +19,11 @@ def add_to_db(audio_files):
                 al1.save()
             
             if not Track.objects.filter(title=audio_file_id3.tag.title).exists():
-                t1 = Track(title=audio_file_id3.tag.title, album=al1, artist=ar1, url=audio_file)
+                t1 = Track(title=audio_file_id3.tag.title, \
+                           album=al1, \
+                           artist=ar1, \
+                           fspath=audio_file, \
+                           media_url=MEDIA_URL + audio_file.split(MEDIA_ROOT)[1])
                 t1.save()
                 print 'Added to DB: ' + audio_file_id3.tag.title
         except Exception as e:

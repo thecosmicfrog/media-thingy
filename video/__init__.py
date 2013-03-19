@@ -1,6 +1,6 @@
 import os
 from models import Video
-from MediaThingy.settings import MEDIA_ROOT
+from MediaThingy.settings import MEDIA_ROOT, MEDIA_URL
 
 video_list = []
 
@@ -9,7 +9,9 @@ def add_to_db(video_files):
         video_title = video_file.rsplit('/', 1)[1] # Get filename
         
         if not Video.objects.filter(title=video_title).exists():
-            vid1 = Video(title=video_title, url=video_file)
+            vid1 = Video(title=video_title, \
+                         fspath=video_file, \
+                         media_url=MEDIA_URL + video_file.split(MEDIA_ROOT)[1])
             vid1.save()
     
             print 'Added to DB: ' + video_title

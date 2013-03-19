@@ -11,6 +11,6 @@ def videos(request):
 def video_title(request, video_title):
     site_url = SITE_URL
     url_set = Video.objects.filter(title=video_title)
-    video_url_full = [u.url for u in url_set][0]            # Assign the first element in the list to track_url
+    video_url_full = [u.fspath for u in url_set][0]            # Assign the first element in the list to track_url
     video_media_url = video_url_full.split(MEDIA_ROOT)[1]  # Split on STATIC_ROOT to find the relative URL 
     return render_to_response('videos/video/title.html', locals(), context_instance=RequestContext(request))

@@ -1,6 +1,6 @@
 import os
 from models import Picture
-from MediaThingy.settings import MEDIA_ROOT
+from MediaThingy.settings import MEDIA_ROOT, MEDIA_URL
 
 image_list = []
 
@@ -9,7 +9,9 @@ def add_to_db(image_files):
         image_name = image_file.rsplit('/', 1)[1] # Get filename
         
         if not Picture.objects.filter(name=image_name).exists():
-            pic1 = Picture(name=image_name, url=image_file)
+            pic1 = Picture(name=image_name, \
+                           fspath=image_file, \
+                           media_url=MEDIA_URL + image_file.split(MEDIA_ROOT)[1])
             pic1.save()
             
             print 'Added to DB: ' + image_name
