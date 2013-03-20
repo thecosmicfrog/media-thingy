@@ -6,6 +6,14 @@
 
 {% block content %}
 
+<p>
+	<a href="/music/artists/{{ artist_name }}">
+		<button class="btn btn-medium" type="button">
+			<i class="icon-chevron-left"></i>&nbsp;&nbsp;{{ artist_name }}
+		</button>
+	</a>
+</p>
+
 <div id="media_list">
 	<table class="table table-bordered">
 		{% for album in albums %}

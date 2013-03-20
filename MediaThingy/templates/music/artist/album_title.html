@@ -4,7 +4,15 @@
 
 {% block header1 %}{{ album_title }}{% endblock %}
 
-{% block col1 %}
+{% block content %}
+
+<p>
+	<a href="/music/albums/{{ album_title }}">
+		<button class="btn btn-medium" type="button">
+			<i class="icon-chevron-left"></i>&nbsp;&nbsp;{{ album_title }}
+		</button>
+	</a>
+</p>
 
 <div id="media_list">
 	<table class="table table-bordered">

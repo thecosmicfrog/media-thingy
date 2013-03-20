@@ -5,7 +5,16 @@
 {% block header1 %}{{ artist_name }}{% endblock %}
 
 {% block content %}
-<h2><a href="albums">Albums</a></h2>
+
+<p>
+	<a href="/">
+		<button class="btn btn-medium" type="button">
+			<i class="icon-chevron-left"></i>&nbsp;&nbsp;Artists
+		</button>
+	</a>
+</p>
+
+<h3><a href="albums">Albums</a></h3>
 
 <div id="media_list">
 	<table class="table table-bordered">
@@ -15,18 +24,13 @@
 			</tr>
 		{% endfor %}
 	</table>
-</div>
 
-<br />
+	<h3><a href="songs">Songs</a></h3>
 
-<h2><a href="songs">Songs</a></h2>
-
-<div id="media_list">
 	<table class="table table-bordered">
 		{% for track in tracks %}
 			<tr>
 				<td><a href="songs/{{ track.title }}">{{ track.title }}</a></td>
-				<td><audio src=""></audio></td>
 			</tr>
 		{% endfor %}
 	</table>

@@ -5,9 +5,19 @@
 {% block header1 %}{{ track_title }} – {{ album_title }}{% endblock %}
 
 {% block content %}
+
+<p>
+	<a href="/music/albums/{{ album_title }}">
+		<button class="btn btn-medium" type="button">
+			<i class="icon-chevron-left"></i>&nbsp;&nbsp;{{ album_title }}
+		</button>
+	</a>
+</p>
+
 <div id="media_list">
 	<table>
 			<audio src="{{ track.media_url }}" controls="controls"></audio>
 	</table>
 </div>
+
 {% endblock %}

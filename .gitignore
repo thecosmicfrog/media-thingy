@@ -10,3 +10,4 @@ admin.py
 *.jpg
 /MediaThingy/media/*
 nginx.conf
+*admin*
