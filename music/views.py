@@ -63,20 +63,20 @@ def upload_handler(request):
                 t1.save()
                 print 'Added to DB: ' + filename.tag.title
             
-            return render_to_response('success.html', locals(), context_instance=RequestContext(request))            
+            return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request))            
         
         elif f_ext in ['.jpg']:
             with open(MEDIA_ROOT + 'pictures/' + filename, 'wb+') as destination:
                 for chunk in f.chunks():
                     destination.write(chunk)
                 
-                return render_to_response('success.html', locals(), context_instance=RequestContext(request)) 
+                return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request)) 
         
         elif f_ext in ['.mp4']:
             with open(MEDIA_ROOT + 'videos/' + filename, 'wb+') as destination:
                 for chunk in f.chunks():
                     destination.write(chunk)
-                return render_to_response('success.html', locals(), context_instance=RequestContext(request)) 
+                return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request)) 
 
     return render_to_response('upload_failure.html', locals(), context_instance=RequestContext(request))
 
