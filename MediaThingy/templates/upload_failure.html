@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Error{% endblock %}
+
+{% block header1 %}Error{% endblock %}
+
+{% block content %}
+
+Error uploading file.
+
+{% block scripts %}
+
+<script type="text/javascript">
+	window.setTimeout(function() {
+	    window.location.href = '/';
+	}, 2000);
+</script>
+
+{% endblock %}
+
+{% endblock %}

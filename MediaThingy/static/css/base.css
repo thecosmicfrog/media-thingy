@@ -1,5 +1,4 @@
 h1 {
-/* 	font-family: Tahoma, Geneva, sans-serif; */
 	font-size: 42px;
 	padding-left: 15px;
 }
@@ -8,24 +7,22 @@ h2 {
 	padding-top: 30px;
 	padding-left: 20px;
 	padding-bottom: 20px;
-/* 	font-family: Tahoma, Geneva, sans-serif; */
 	font-size: 26px;
 	color: #000000;
 }
-
-/* body { */
-/* 	font-family: Tahoma, Geneva, sans-serif; */
-/* } */
 
 #crumbs {
 	padding-left: 15px;
 }
 
 #media_list {
-/* 	font-family: Tahoma, Geneva, sans-serif; */
 	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 20px;
+}
+
+#upload-form {
+	padding: 5px;
 }
 
 td {

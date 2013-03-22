@@ -16,13 +16,11 @@
 
 <div id="media_list">
 	<table class="table table-bordered">
-		<th><i class="icon-star"></i></th>
 		<th>Track</th>
 		<th>Artist</th>
 		<th>Album</th>
 		{% for track in tracks %}
 			<tr>
-				<td></td>
 				<td><a href="{{ track.title }}">{{ track.title }}</a></td>
 				<td><a href="/music/artists/{{ track.artist }}">{{ track.artist }}</a></td>
 				<td><a href="/music/albums/{{ track.album }}">{{ track.album }}</a></td>
@@ -30,4 +28,5 @@
 		{% endfor %}
 	</table>
 </div>
+
 {% endblock %}

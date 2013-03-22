@@ -31,7 +31,15 @@
 			<div class="navbar-inner">
 				<div class="container-fluid">
 					<a class="brand" href="/">MediaThingy</a>
-					<div class="nav-collapse collapse"">
+					<div class="nav-collapse collapse">
+						<a class="dropdown-toggle navbar-text pull-right" data-toggle="dropdown" href="">
+							Upload
+						</a>
+						<a class="dropdown-menu navbar-text pull-right">
+							<form action="/upload_handler/" method="post" enctype="multipart/form-data" id="upload-form"> {% csrf_token %}
+								<input type="file" onchange="this.form.submit(); document.getElementById('upload-success').show();" name="upload">
+							</form>
+						</a>
 						<ul class="nav">
 							<li><a href="/music">Music</a></li>
 							<li><a href="/pictures">Pictures</a></li>
@@ -43,7 +51,7 @@
 		</div>
 		
 		<h2>{% block header1 %}{% endblock %}</h2>
-				
+		
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span9">
