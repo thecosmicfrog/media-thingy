@@ -5,7 +5,6 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from music.models import Artist, Album, Track
 from MediaThingy.settings import MEDIA_ROOT, MEDIA_URL, SITE_URL
-from TiffImagePlugin import ARTIST
 
 def base(request):
     return render_to_response('base.html', locals())
