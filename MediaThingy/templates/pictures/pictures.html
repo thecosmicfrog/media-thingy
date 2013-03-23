@@ -17,22 +17,14 @@
 </p>
 
 <div id="media_list">
-	<table>
+	<table class="table table-bordered">
 		{% for picture in pictures %}
 			<tr>
 				<td>
 					<a href="{{ picture.name }}">{{ picture.name }}</a>
-	<!-- 				<a href="{{ picture.name }}"><img src="{{ MEDIA_URL }}{{ picture }}" /></a> -->
 				</td>
 			</tr>
 		{% endfor %}
-	
-	<!-- 	{% for folder in folder_struct %} -->
-	<!-- 		{% for f in folder %} -->
-	<!-- 			{{ f }} -> -->
-	<!-- 		{% endfor %} -->
-	<!-- 		<br> -->
-	<!-- 	{% endfor %} -->
 	</table>
 </div>
 

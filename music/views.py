@@ -80,7 +80,8 @@ def upload_handler(request):
                 
             # If the picture doesn't exist in the database, add it.
             if not Picture.objects.filter(name=filename).exists():
-                picture = Picture(name=filename, \
+                picture = Picture(name=os.path.splitext(filename)[0], \
+                                  filename=filename, \
                                   fspath=MEDIA_ROOT + 'pictures/' + filename, \
                                   media_url=MEDIA_URL + (MEDIA_ROOT + 'pictures/' + filename).split(MEDIA_ROOT)[1])
                 picture.save()
@@ -95,7 +96,8 @@ def upload_handler(request):
                         
             # If the video doesn't exist in the database, add it.
             if not Video.objects.filter(title=filename).exists():
-                video = Video(title=filename, \
+                video = Video(title=os.path.splitext(filename)[0], \
+                              filename=filename, \
                               fspath=MEDIA_ROOT + 'videos/' + filename, \
                               media_url=MEDIA_URL + (MEDIA_ROOT + 'videos/' + filename).split(MEDIA_ROOT)[1])
                 video.save()

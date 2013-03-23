@@ -6,15 +6,16 @@ video_list = []
 
 def add_to_db(video_files):
     for video_file in video_files:
-        video_title = video_file.rsplit('/', 1)[1] # Get filename
+        video_filename = video_file.rsplit('/', 1)[1] # Get filename
         
-        if not Video.objects.filter(title=video_title).exists():
-            vid1 = Video(title=video_title, \
+        if not Video.objects.filter(filename=video_filename).exists():
+            vid1 = Video(title=os.path.splitext(video_filename)[0], \
+                         filename=video_filename, \
                          fspath=video_file, \
                          media_url=MEDIA_URL + video_file.split(MEDIA_ROOT)[1])
             vid1.save()
     
-            print 'Added to DB: ' + video_title
+            print 'Added to DB: ' + video_filename
 
 def process_file(curr_dir):
     curr_dir = os.path.abspath(curr_dir)

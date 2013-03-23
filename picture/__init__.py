@@ -6,15 +6,16 @@ image_list = []
 
 def add_to_db(image_files):
     for image_file in image_files:
-        image_name = image_file.rsplit('/', 1)[1] # Get filename
+        image_filename = image_file.rsplit('/', 1)[1] # Get filename
         
-        if not Picture.objects.filter(name=image_name).exists():
-            pic1 = Picture(name=image_name, \
+        if not Picture.objects.filter(filename=image_filename).exists():
+            pic1 = Picture(name=os.path.splitext(image_filename)[0], \
+                           filename=image_filename, \
                            fspath=image_file, \
                            media_url=MEDIA_URL + image_file.split(MEDIA_ROOT)[1])
             pic1.save()
             
-            print 'Added to DB: ' + image_name
+            print 'Added to DB: ' + image_filename
 
 def process_file(curr_dir):
     curr_dir = os.path.abspath(curr_dir)

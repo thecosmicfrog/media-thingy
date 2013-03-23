@@ -14,16 +14,6 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		
-		<style type="text/css">
- 			/*body {
-  				padding-top: 60px;
- 				padding-bottom: 60px;
- 			}*/
-			.sidebar-nav {
-				padding: 9px 0;
-			}
-		</style>
-		
 		{% block head %}{% endblock %}
 	</head>
 	<body>		
@@ -57,18 +47,8 @@
 				<div class="span9">
 					{% block content %}{% endblock %}
 				</div><!-- /span -->
-<!-- 				<div class="span5"> -->
-<!-- 					{% block col1 %}{% endblock %} -->
-<!-- 				</div>/span -->
-<!-- 				<div class="span3"> -->
-<!-- 					{% block col2 %}{% endblock %} -->
-<!-- 				</div>/span -->
-			</div><!-- /row -->
-						
+			</div><!-- /row -->	
 			<hr>
-			<footer>
-				<p>&copy; Aaron Hastings, 2013</p>
-			</footer>
 		</div><!-- /fluid-container -->
 		
 		<script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
