@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from music.models import Artist, Album, Track
 from MediaThingy.settings import MEDIA_ROOT, MEDIA_URL, SITE_URL
+from TiffImagePlugin import ARTIST
 
 def base(request):
     return render_to_response('base.html', locals())
@@ -45,26 +46,36 @@ def upload_handler(request):
                     # Need to pass on Errno 17, due to race conditions caused
                     # by making directories that already exist.
                     pass
-                
+            
+            # If the artist or album doesn't exist in the database, create
+            # table(s) for them. If they already exists, perform a query to
+            # obtain an Artist or Album object for use as a foreign key.
             if not Artist.objects.filter(name=filename.tag.artist).exists():
-                ar1 = Artist(name=filename.tag.artist)
-                ar1.save()
+                artist = Artist(name=filename.tag.artist)
+                artist.save()
+            else:
+                artist_set = Artist.objects.filter(name=filename.tag.artist)
+                artist = [a for a in artist_set][0]
     
             if not Album.objects.filter(title=filename.tag.album).exists():
-                al1 = Album(title=filename.tag.album, artist=ar1)
-                al1.save()
+                album = Album(title=filename.tag.album, artist=artist)
+                album.save()
+            else:
+                album_set = Album.objects.filter(title=filename.tag.album)
+                album = [a for a in album_set][0]
             
             if not Track.objects.filter(title=filename.tag.title).exists():
-                t1 = Track(title=filename.tag.title, \
-                           album=al1, \
-                           artist=ar1, \
+                track = Track(title=filename.tag.title, \
+                           album=album, \
+                           artist=artist, \
                            fspath=dir_struct + str(f), \
                            media_url=MEDIA_URL + (dir_struct + str(f)).split(MEDIA_ROOT)[1])
-                t1.save()
+                track.save()
                 print 'Added to DB: ' + filename.tag.title
             
-            return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request))            
+                return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request))
         
+        # TODO: Picture uploads
         elif f_ext in ['.jpg']:
             with open(MEDIA_ROOT + 'pictures/' + filename, 'wb+') as destination:
                 for chunk in f.chunks():
@@ -72,6 +83,7 @@ def upload_handler(request):
                 
                 return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request)) 
         
+        # TODO: Video uploads
         elif f_ext in ['.mp4']:
             with open(MEDIA_ROOT + 'videos/' + filename, 'wb+') as destination:
                 for chunk in f.chunks():

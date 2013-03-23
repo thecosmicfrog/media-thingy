@@ -11,20 +11,20 @@ def add_to_db(audio_files):
         
         try:
             if not Artist.objects.filter(name=audio_file_id3.tag.artist).exists():
-                ar1 = Artist(name=audio_file_id3.tag.artist)
-                ar1.save()
+                artist = Artist(name=audio_file_id3.tag.artist)
+                artist.save()
         
             if not Album.objects.filter(title=audio_file_id3.tag.album).exists():
-                al1 = Album(title=audio_file_id3.tag.album, artist=ar1)
-                al1.save()
+                album = Album(title=audio_file_id3.tag.album, artist=artist)
+                album.save()
             
             if not Track.objects.filter(title=audio_file_id3.tag.title).exists():
-                t1 = Track(title=audio_file_id3.tag.title, \
-                           album=al1, \
-                           artist=ar1, \
+                track = Track(title=audio_file_id3.tag.title, \
+                           album=album, \
+                           artist=artist, \
                            fspath=audio_file, \
                            media_url=MEDIA_URL + audio_file.split(MEDIA_ROOT)[1])
-                t1.save()
+                track.save()
                 print 'Added to DB: ' + audio_file_id3.tag.title
         except Exception as e:
             print e
