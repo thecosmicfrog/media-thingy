@@ -4,6 +4,8 @@ import shutil
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from music.models import Artist, Album, Track
+from picture.models import Picture
+from video.models import Video
 from MediaThingy.settings import MEDIA_ROOT, MEDIA_URL, SITE_URL
 
 def base(request):
@@ -14,9 +16,6 @@ def home(request):
 
 def music(request):
     return render_to_response('music.html', locals(), context_instance=RequestContext(request))
-
-def upload(request):
-    return render_to_response('upload.html', locals(), context_instance=RequestContext(request))
 
 def upload_handler(request):
     if request.method == 'POST':
@@ -65,28 +64,43 @@ def upload_handler(request):
             
             if not Track.objects.filter(title=filename.tag.title).exists():
                 track = Track(title=filename.tag.title, \
-                           album=album, \
-                           artist=artist, \
-                           fspath=dir_struct + str(f), \
-                           media_url=MEDIA_URL + (dir_struct + str(f)).split(MEDIA_ROOT)[1])
+                              album=album, \
+                              artist=artist, \
+                              fspath=dir_struct + str(f), \
+                              media_url=MEDIA_URL + (dir_struct + str(f)).split(MEDIA_ROOT)[1])
                 track.save()
                 print 'Added to DB: ' + filename.tag.title
             
                 return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request))
         
-        # TODO: Picture uploads
         elif f_ext in ['.jpg']:
             with open(MEDIA_ROOT + 'pictures/' + filename, 'wb+') as destination:
                 for chunk in f.chunks():
                     destination.write(chunk)
                 
+            # If the picture doesn't exist in the database, add it.
+            if not Picture.objects.filter(name=filename).exists():
+                picture = Picture(name=filename, \
+                                  fspath=MEDIA_ROOT + 'pictures/' + filename, \
+                                  media_url=MEDIA_URL + (MEDIA_ROOT + 'pictures/' + filename).split(MEDIA_ROOT)[1])
+                picture.save()
+                print 'Added to DB: ' + filename
+                
                 return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request)) 
         
-        # TODO: Video uploads
         elif f_ext in ['.mp4']:
             with open(MEDIA_ROOT + 'videos/' + filename, 'wb+') as destination:
                 for chunk in f.chunks():
                     destination.write(chunk)
+                        
+            # If the video doesn't exist in the database, add it.
+            if not Video.objects.filter(title=filename).exists():
+                video = Video(title=filename, \
+                              fspath=MEDIA_ROOT + 'videos/' + filename, \
+                              media_url=MEDIA_URL + (MEDIA_ROOT + 'videos/' + filename).split(MEDIA_ROOT)[1])
+                video.save()
+                print 'Added to DB: ' + filename
+                
                 return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request)) 
 
     return render_to_response('upload_failure.html', locals(), context_instance=RequestContext(request))

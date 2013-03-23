@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include
-from music.views import home, music, upload, upload_handler
+from music.views import home, music, upload_handler
 from music.views import artists, artist_name, artist_album_title, artist_name_albums, \
                         artist_name_songs, artist_name_songs_track_title, \
                         artist_name_albums_album_title_track_title
@@ -41,7 +41,6 @@ urlpatterns = patterns('',
     (r'^videos/(?P<video_title>[\w\W]+)/$', video_title),
     (r'^videos/$', videos),
     
-    (r'^upload/$', upload),
     (r'^upload_handler/$', upload_handler),
 )
 
