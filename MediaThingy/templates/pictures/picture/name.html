@@ -28,24 +28,47 @@
 
 {% block scripts %}
 
-<script>
+<script type="text/javascript">
+	var orientation = 0; // 0=upright; 1=rotated clockwise; -1=rotated anti-clockwise
 	$(document).ready(function() {
 		$("#rotateClockwiseButton").click(function() {
-			$("#media_list").css({
-				"-webkit-transform-origin": "50% 50%",
-				"-webkit-transform": "rotate(90deg)",
-				"-moz-transform": "rotate(90deg)"
-			});
+			if (orientation == 0) {
+				$("#media_list").css({
+					"-webkit-transform-origin": "50% 50%",
+					"-webkit-transform": "rotate(90deg)",
+					"-moz-transform": "rotate(90deg)"
+				});
+				orientation = 1;
+			}
+			else if (orientation == -1) {
+				$("#media_list").css({
+					"-webkit-transform-origin": "50% 50%",
+					"-webkit-transform": "rotate(0deg)",
+					"-moz-transform": "rotate(0deg)"
+				});
+				orientation = 0;
+			}
 		});
 	});
 	
 	$(document).ready(function() {
 		$("#rotateAnticlockwiseButton").click(function() {
-			$("#media_list").css({
-				"-webkit-transform-origin": "50% 50%",
-				"-webkit-transform": "rotate(-90deg)",
-				"-moz-transform": "rotate(-90deg)"
-			});
+			if (orientation == 0) {
+				$("#media_list").css({
+					"-webkit-transform-origin": "50% 50%",
+					"-webkit-transform": "rotate(-90deg)",
+					"-moz-transform": "rotate(-90deg)"
+				});
+				orientation = -1;
+			}
+			else if (orientation == 1) {
+				$("#media_list").css({
+					"-webkit-transform-origin": "50% 50%",
+					"-webkit-transform": "rotate(0deg)",
+					"-moz-transform": "rotate(0deg)"
+				});
+				orientation = 0;
+			}
 		});
 	});
 </script>
