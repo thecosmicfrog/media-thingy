@@ -4,15 +4,10 @@
 
 {% block header1 %}Videos{% endblock %}
 
-{% block content %}
+{% block back_button_link %}/{% endblock %}
+{% block back_button_text %}Home{% endblock %}
 
-<p>
-	<a href="/">
-		<button class="btn btn-medium" type="button">
-			<i class="icon-chevron-left"></i>&nbsp;&nbsp;Home
-		</button>
-	</a>
-</p>
+{% block content %}
 
 <div id="media_list">
 	<table class="table table-bordered">

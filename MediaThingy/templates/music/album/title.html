@@ -2,35 +2,14 @@
 
 {% block title %}{{ album_title }} – {{ artist_name }}{% endblock %}
 
-{% block head %}
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#jquery_jplayer_1").jPlayer({
-			ready: function() {
-				$(this).jPlayer("setMedia", {
-					mp3: "{{ site_url }}{{ track.media_url }}"
-				});
-			},
-			swfPath: "/js",
-			supplied: "mp3"
-		});
-	});
-</script>
-
-{% endblock %}
+{% block head %}{% endblock %}
 
 {% block header1 %}{{ album_title }} – {{ artist_name }}{% endblock %}
 
-{% block content %}
+{% block back_button_link %}/music/albums{% endblock %}
+{% block back_button_text %}Albums{% endblock %}
 
-<p>
-	<a href="/music/albums">
-		<button class="btn btn-medium" type="button">
-			<i class="icon-chevron-left"></i>&nbsp;&nbsp;Albums
-		</button>
-	</a>
-</p>
+{% block content %}
 
 <div id="media_list">
 	<table class="table table-bordered">

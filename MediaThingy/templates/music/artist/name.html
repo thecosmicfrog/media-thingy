@@ -4,15 +4,10 @@
 
 {% block header1 %}{{ artist_name }}{% endblock %}
 
-{% block content %}
+{% block back_button_link %}/music/artists{% endblock %}
+{% block back_button_text %}Artists{% endblock %}
 
-<p>
-	<a href="/">
-		<button class="btn btn-medium" type="button">
-			<i class="icon-chevron-left"></i>&nbsp;&nbsp;Artists
-		</button>
-	</a>
-</p>
+{% block content %}
 
 <h3><a href="albums">Albums</a></h3>
 

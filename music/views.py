@@ -146,7 +146,7 @@ def albums(request):
 def album_title(request, album_title):
     album_tracks = Track.objects.filter(album__title=album_title).order_by('title')
     artist_set = Artist.objects.filter(album__title=album_title)
-    artist_name = [a.name for a in artist_set]
+    artist_name = [a.name for a in artist_set][0]
     return render_to_response('music/album/title.html', locals(), context_instance=RequestContext(request))
 
 def album_title_track_title(request, album_title, track_title):

@@ -16,7 +16,7 @@
 		
 		{% block head %}{% endblock %}
 	</head>
-	<body>		
+	<body>	
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
@@ -27,6 +27,7 @@
 						</a>
 						<a class="dropdown-menu navbar-text pull-right">
 							<form action="/upload_handler/" method="post" enctype="multipart/form-data" id="upload-form"> {% csrf_token %}
+								Select a file to upload:<br>
 								<input type="file" onchange="this.form.submit(); document.getElementById('upload-success').show();" name="upload">
 							</form>
 						</a>
@@ -39,8 +40,16 @@
 				</div>
 			</div>
 		</div>
-		
+				
 		<h2>{% block header1 %}{% endblock %}</h2>
+		
+		<p id="back-button">
+			<a href="{% block back_button_link %}{% endblock %}">
+				<button class="btn btn-medium" type="button">
+					<i class="icon-chevron-left"></i>&nbsp;&nbsp;{% block back_button_text %}{% endblock %}
+				</button>
+			</a>
+		</p>
 		
 		<div class="container-fluid">
 			<div class="row-fluid">

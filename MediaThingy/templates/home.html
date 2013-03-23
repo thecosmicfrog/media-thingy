@@ -34,4 +34,14 @@
 	</table>
 </div>
 
+{% block scripts %}
+<!-- No need for a back button on the home page. -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#back-button").hide();
+	});
+</script>
+
+{% endblock %}
+
 {% endblock %}

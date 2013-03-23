@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}{{ picture_title }}{% endblock %}
+{% block title %}{{ picture_name }}{% endblock %}
 
-{% block header1 %}{{ picture_title }}{% endblock %}
+{% block header1 %}{{ picture_name }}{% endblock %}
 
 {% block head %}{% endblock %}
+
+{% block back_button_link %}/pictures{% endblock %}
+{% block back_button_text %}Pictures{% endblock %}
 
 {% block content %}
 

@@ -6,20 +6,15 @@
 
 {% block header1 %}{{ track_title }}{% endblock %}
 
+{% block back_button_link %}/music/songs{% endblock %}
+{% block back_button_text %}Songs{% endblock %}
+
 {% block content %}
 
-<p>
-	<a href="/music/songs">
-		<button class="btn btn-medium" type="button">
-			<i class="icon-chevron-left"></i>&nbsp;&nbsp;Songs
-		</button>
-	</a>
-</p>
-
 <div id="media_list">
-	<table>
-			<audio src="{{ track.media_url }}" controls autoplay></audio>
-	</table>
+		<audio controls autoplay> 
+			<source src="{{ track.media_url }}"></source>
+		</audio>
 </div>
 
 {% endblock %}

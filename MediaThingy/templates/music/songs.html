@@ -4,15 +4,10 @@
 
 {% block header1 %}Songs{% endblock %}
 
-{% block content %}
+{% block back_button_link %}/music{% endblock %}
+{% block back_button_text %}Music{% endblock %}
 
-<p>
-	<a href="/music">
-		<button class="btn btn-medium" type="button">
-			<i class="icon-chevron-left"></i>&nbsp;&nbsp;Music
-		</button>
-	</a>
-</p>
+{% block content %}
 
 <div id="media_list">
 	<table class="table table-bordered">
