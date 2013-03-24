@@ -9,25 +9,28 @@ def add_to_db(audio_files):
     for audio_file in audio_files:
         audio_file_id3 = eyed3.load(audio_file)
         
+        # If the artist, album or track doesn't exist in the database, create
+        # table(s) for them.
         try:
             if not Artist.objects.filter(name=audio_file_id3.tag.artist).exists():
                 artist = Artist(name=audio_file_id3.tag.artist)
                 artist.save()
         
             if not Album.objects.filter(title=audio_file_id3.tag.album).exists():
-                album = Album(title=audio_file_id3.tag.album, artist=artist)
+                album = Album(title=audio_file_id3.tag.album, \
+                              artist=artist)
                 album.save()
             
             if not Track.objects.filter(title=audio_file_id3.tag.title).exists():
                 track = Track(title=audio_file_id3.tag.title, \
-                           album=album, \
-                           artist=artist, \
-                           fspath=audio_file, \
-                           media_url=MEDIA_URL + audio_file.split(MEDIA_ROOT)[1])
+                              album=album, \
+                              artist=artist, \
+                              fspath=audio_file, \
+                              media_url=MEDIA_URL + audio_file.split(MEDIA_ROOT)[1])
                 track.save()
                 print 'Added to DB: ' + audio_file_id3.tag.title
         except Exception as e:
-            print e
+            print 'Error: ' + e
 
 def process_file(curr_dir):
     curr_dir = os.path.abspath(curr_dir)
@@ -44,7 +47,7 @@ def process_file(curr_dir):
             file_ext = os.path.splitext(curr_file)[1]
  
             # If file is a compatible audio file, print its name.
-            if file_ext in ['.mp3']:
+            if file_ext in ['.mp3', '.MP3']:
                 audio_list.append(curr_file)
         else: # File is directory. Recursively run function.
             process_file(curr_file)

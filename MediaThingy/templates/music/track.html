@@ -2,8 +2,6 @@
 
 {% block title %}{{ track_title }}{% endblock %}
 
-{% block head %}{% endblock %}
-
 {% block header1 %}{{ track_title }}{% endblock %}
 
 {% block back_button_link %}/music/songs{% endblock %}
@@ -13,7 +11,7 @@
 
 <div id="media_list">
 		<audio controls autoplay> 
-			<source src="{{ track.media_url }}"></source>
+			<source src="{{ track.media_url }}">
 		</audio>
 </div>
 

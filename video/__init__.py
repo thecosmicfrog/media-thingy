@@ -9,12 +9,11 @@ def add_to_db(video_files):
         video_filename = video_file.rsplit('/', 1)[1] # Get filename
         
         if not Video.objects.filter(filename=video_filename).exists():
-            vid1 = Video(title=os.path.splitext(video_filename)[0], \
-                         filename=video_filename, \
-                         fspath=video_file, \
-                         media_url=MEDIA_URL + video_file.split(MEDIA_ROOT)[1])
-            vid1.save()
-    
+            video = Video(title=os.path.splitext(video_filename)[0], \
+                          filename=video_filename, \
+                          fspath=video_file, \
+                          media_url=MEDIA_URL + video_file.split(MEDIA_ROOT)[1])
+            video.save()
             print 'Added to DB: ' + video_filename
 
 def process_file(curr_dir):

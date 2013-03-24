@@ -12,7 +12,11 @@
 {% block content %}
 
 <div id="media_list">
-	<div id="picture"><img src="{{ picture.media_url }}"></img></div>
+	{% if picture.media_url %}
+		<div id="picture"><img src="{{ picture.media_url }}"></img></div>
+	{% else %}
+		Error: No such file found.
+	{% endif %}
 </div>
 
 <div class="btn-group">

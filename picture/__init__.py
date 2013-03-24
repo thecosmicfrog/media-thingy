@@ -9,12 +9,11 @@ def add_to_db(image_files):
         image_filename = image_file.rsplit('/', 1)[1] # Get filename
         
         if not Picture.objects.filter(filename=image_filename).exists():
-            pic1 = Picture(name=os.path.splitext(image_filename)[0], \
-                           filename=image_filename, \
-                           fspath=image_file, \
-                           media_url=MEDIA_URL + image_file.split(MEDIA_ROOT)[1])
-            pic1.save()
-            
+            picture = Picture(name=os.path.splitext(image_filename)[0], \
+                              filename=image_filename, \
+                              fspath=image_file, \
+                              media_url=MEDIA_URL + image_file.split(MEDIA_ROOT)[1])
+            picture.save()
             print 'Added to DB: ' + image_filename
 
 def process_file(curr_dir):
@@ -32,7 +31,7 @@ def process_file(curr_dir):
             file_ext = os.path.splitext(curr_file)[1]
  
             # If file is a compatible image file, print its name.
-            if file_ext in ['.jpg']:
+            if file_ext in ['.jpg', '.JPG']:
                 image_list.append(curr_file)
         else: # File is directory. Recursively run function.
             process_file(curr_file)
