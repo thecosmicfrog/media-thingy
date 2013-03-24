@@ -8,13 +8,17 @@ h2 {
 	padding-left: 20px;
 	padding-bottom: 20px;
 	font-size: 26px;
-	color: #000000;
+/* 	color: #000000; */
 }
 
 #media_list {
 	font-size: 18px;
-	padding-top: 10px;
+	padding-top: 20px;
 	padding-bottom: 20px;
+}
+
+#picture {
+	padding-left: 50px;
 }
 
 #upload-form {

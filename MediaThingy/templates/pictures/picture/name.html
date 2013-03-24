@@ -12,9 +12,7 @@
 {% block content %}
 
 <div id="media_list">
-	<table>
-			<div id="picture"><img src="{{ picture.media_url }}"></img></div>
-	</table>
+	<div id="picture"><img src="{{ picture.media_url }}"></img></div>
 </div>
 
 <div class="btn-group">
@@ -55,7 +53,7 @@
 		$("#rotateAnticlockwiseButton").click(function() {
 			if (orientation == 0) {
 				$("#media_list").css({
-					"-webkit-transform-origin": "50% 50%",
+					"-webkit-transform-origin": "54% 54%",
 					"-webkit-transform": "rotate(-90deg)",
 					"-moz-transform": "rotate(-90deg)"
 				});
