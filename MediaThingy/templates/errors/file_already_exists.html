@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Error: File already exists{% endblock %}
+
+{% block header1 %}Error: File already exists{% endblock %}
+
+{% block content %}
+
+Error: File "{{ f }}" already exists.
+
+{% block scripts %}
+
+<!-- No need for a back button on an error page. -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#back-button").hide();
+	});
+</script>
+
+<!-- Redirect page to Home after 2 seconds. -->
+<script type="text/javascript">
+	window.setTimeout(function() {
+	    window.location.href = '/';
+	}, 2000);
+</script>
+
+{% endblock %}
+
+{% endblock %}

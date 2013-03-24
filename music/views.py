@@ -26,8 +26,8 @@ def upload_handler(request):
         # If file is a compatible music file, build a filesystem structure for
         # it (media/artist-name/album-name), then write it to that location and
         # add details of the file to the database.
-        if f_ext in ['.mp3']:
-            with open(MEDIA_ROOT + str(f), 'wb+') as destination:
+        if f_ext in ['.mp3', '.MP3']:
+            with open(MEDIA_ROOT + str(f), 'wb') as destination:
                 for chunk in f.chunks():
                     destination.write(chunk)
                 
@@ -44,6 +44,10 @@ def upload_handler(request):
                     # Need to pass on Errno 17, due to race conditions caused
                     # by making directories that already exist.
                     pass
+                except Exception as e:
+                    # File already exists. Remove the duplicate copy.
+                    os.remove(MEDIA_ROOT + str(f))
+                    return render_to_response('errors/file_already_exists.html', locals(), context_instance=RequestContext(request))
             
             # If the artist or album doesn't exist in the database, create
             # table(s) for them. If they already exists, perform a query to
@@ -70,13 +74,17 @@ def upload_handler(request):
                               media_url=MEDIA_URL + (dir_struct + str(f)).split(MEDIA_ROOT)[1])
                 track.save()
                 print 'Added to DB: ' + filename.tag.title
-            
-                return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request))
+                return render_to_response('errors/upload_success.html', locals(), context_instance=RequestContext(request))
+            else:
+                return render_to_response('errors/file_already_exists.html', locals(), context_instance=RequestContext(request))
         
-        elif f_ext in ['.jpg']:
-            with open(MEDIA_ROOT + 'pictures/' + filename, 'wb+') as destination:
-                for chunk in f.chunks():
-                    destination.write(chunk)
+        elif f_ext in ['.jpg', '.JPG']:
+            if not os.path.exists(MEDIA_ROOT + 'pictures/' + filename):
+                with open(MEDIA_ROOT + 'pictures/' + filename, 'wb') as destination:
+                    for chunk in f.chunks():
+                        destination.write(chunk)
+            else: # File already exists. Remove the duplicate copy.
+                return render_to_response('errors/file_already_exists.html', locals(), context_instance=RequestContext(request))
                 
             # If the picture doesn't exist in the database, add it.
             if not Picture.objects.filter(name=filename).exists():
@@ -86,13 +94,17 @@ def upload_handler(request):
                                   media_url=MEDIA_URL + (MEDIA_ROOT + 'pictures/' + filename).split(MEDIA_ROOT)[1])
                 picture.save()
                 print 'Added to DB: ' + filename
-                
-                return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request)) 
+                return render_to_response('errors/upload_success.html', locals(), context_instance=RequestContext(request)) 
+            else:
+                return render_to_response('errors/file_already_exists.html', locals(), context_instance=RequestContext(request))
         
-        elif f_ext in ['.mp4']:
-            with open(MEDIA_ROOT + 'videos/' + filename, 'wb+') as destination:
-                for chunk in f.chunks():
-                    destination.write(chunk)
+        elif f_ext in ['.mp4', '.MP4']:
+            if not os.path.exists(MEDIA_ROOT + 'videos/' + filename):
+                with open(MEDIA_ROOT + 'videos/' + filename, 'wb') as destination:
+                    for chunk in f.chunks():
+                        destination.write(chunk)
+            else: # File already exists. Remove the duplicate copy.
+                return render_to_response('errors/file_already_exists.html', locals(), context_instance=RequestContext(request))
                         
             # If the video doesn't exist in the database, add it.
             if not Video.objects.filter(title=filename).exists():
@@ -102,10 +114,11 @@ def upload_handler(request):
                               media_url=MEDIA_URL + (MEDIA_ROOT + 'videos/' + filename).split(MEDIA_ROOT)[1])
                 video.save()
                 print 'Added to DB: ' + filename
-                
-                return render_to_response('upload_success.html', locals(), context_instance=RequestContext(request)) 
+                return render_to_response('errors/upload_success.html', locals(), context_instance=RequestContext(request))
+            else:
+                return render_to_response('errors/file_already_exists.html', locals(), context_instance=RequestContext(request))
 
-    return render_to_response('upload_failure.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('errors/upload_failure.html', locals(), context_instance=RequestContext(request))
 
 def artists(request):
     artists = Artist.objects.order_by('name')
