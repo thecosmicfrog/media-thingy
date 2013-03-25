@@ -2,14 +2,14 @@
 
 {% block title %}Albums – {{ artist_name }}{% endblock %}
 
-{% block header1 %}Albums – {{ artist_name }}{% endblock %}
+{% block heading %}Albums – {{ artist_name }}{% endblock %}
 
 {% block back_button_link %}/music/artists/{{ artist_name }}{% endblock %}
 {% block back_button_text %}{{ artist_name }}{% endblock %}
 
 {% block content %}
 
-<div id="media_list">
+<div id="media_pane">
 	<table class="table table-bordered">
 		{% for album in albums %}
 			<tr>

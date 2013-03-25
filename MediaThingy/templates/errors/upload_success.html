@@ -2,7 +2,7 @@
 
 {% block title %}Success{% endblock %}
 
-{% block header1 %}Success{% endblock %}
+{% block heading %}Success{% endblock %}
 
 {% block content %}
 
@@ -11,14 +11,14 @@ File uploaded successfully.
 {% block scripts %}
 
 <!-- No need for a back button on an error page. -->
-<script type="text/javascript">
+<script>
 	$(document).ready(function() {
 		$("#back-button").hide();
 	});
 </script>
 
 <!-- Redirect page to Home after 2 seconds. -->
-<script type="text/javascript">
+<script>
 	window.setTimeout(function() {
 	    window.location.href = '/';
 	}, 2000);

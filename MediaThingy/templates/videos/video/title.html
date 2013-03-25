@@ -2,14 +2,14 @@
 
 {% block title %}{{ video_title }}{% endblock %}
 
-{% block header1 %}{{ video_title }}{% endblock %}
+{% block heading %}{{ video_title }}{% endblock %}
 
 {% block back_button_link %}/videos{% endblock %}
 {% block back_button_text %}Videos{% endblock %}
 
 {% block content %}
 
-<div id="media_list">
+<div id="media_pane">
 	<video width="384" height="216" controls autoplay>
 		<source src="{{ video.media_url }}">
 	</video>
