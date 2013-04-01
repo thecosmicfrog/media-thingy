@@ -9,11 +9,14 @@
 
 {% block content %}
 
-<div id="media_pane">
+<div id="media-pane">
 	<table class="table table-bordered">
+		<th>Album</th>
+		<th>Artist</th>
 		{% for album in albums %}
 			<tr>
 				<td><a href="{{ album.title }}">{{ album.title }}</a></td>
+				<td><a href="/music/artists/{{ album.artist }}">{{ album.artist }}</a></td>
 			</tr>
 		{% endfor %}
 	</table>
