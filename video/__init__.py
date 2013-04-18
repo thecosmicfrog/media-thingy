@@ -31,7 +31,7 @@ def process_file(curr_dir):
             file_ext = os.path.splitext(curr_file)[1]
  
             # If file is a compatible video file, print its name.
-            if file_ext in ['.mp4']:
+            if file_ext in ['.mp4', '.MP4', '.m4v', '.M4V']:
                 video_list.append(curr_file)
         else: # File is directory. Recursively run function.
             process_file(curr_file)

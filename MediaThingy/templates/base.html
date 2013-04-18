@@ -28,7 +28,7 @@
 						<a class="dropdown-menu navbar-text pull-right">
 							<form action="/upload_handler/" method="post" enctype="multipart/form-data" id="upload-form"> {% csrf_token %}
 								Select a file to upload:<br>
-								<input type="file" onchange="this.form.submit(); document.getElementById('upload-success').show();" name="upload">
+								<input type="file" multiple onchange="this.form.submit(); document.getElementById('upload-success').show();" name="upload">
 							</form>
 						</a>
 						<ul class="nav">

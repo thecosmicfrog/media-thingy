@@ -96,7 +96,7 @@ def upload_handler(request):
             else:
                 return render_to_response('errors/file_already_exists.html', locals(), context_instance=RequestContext(request))
         
-        elif f_ext in ['.mp4', '.MP4']:
+        elif f_ext in ['.mp4', '.MP4', '.m4v', '.M4V']:
             if not os.path.exists(MEDIA_ROOT + 'videos/' + str(f)):
                 with open(MEDIA_ROOT + 'videos/' + str(f), 'wb') as destination:
                     for chunk in f.chunks():

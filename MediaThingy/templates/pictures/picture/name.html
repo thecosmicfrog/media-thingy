@@ -12,19 +12,15 @@
 {% block content %}
 
 <div id="media-pane">
-	{% if picture.media_url %}
-		<div id="picture"><img src="{{ picture.media_url }}"></img></div>
-	{% else %}
-		Error: No such file found.
-	{% endif %}
+	<img src="{{ picture.media_url }}">
 </div>
 
 <div class="btn-group">
 	<a id="rotateAnticlockwiseButton" class="btn btn-primary">
-		<img src="{{ STATIC_URL}}img/rotate_anticlockwise.png" />
+		<img src="{{ STATIC_URL}}img/rotate_anticlockwise.png">
 	</a>
 	<a id="rotateClockwiseButton" class="btn btn-primary">
-		<img src="{{ STATIC_URL}}img/rotate_clockwise.png" />
+		<img src="{{ STATIC_URL}}img/rotate_clockwise.png">
 	</a>
 </div>
 

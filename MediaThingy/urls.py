@@ -43,10 +43,3 @@ urlpatterns = patterns('',
     
     (r'^upload_handler/$', upload_handler),
 )
-
-#if DEBUG:
-#    urlpatterns += patterns('',
-#        (r'^static/(?P<path>.*)$',
-#         'django.views.static.serve',
-#         {'document_root': 'static'}),
-#)
